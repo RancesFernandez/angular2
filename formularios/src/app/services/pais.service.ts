@@ -9,6 +9,6 @@ export class PaisService {
   constructor( private http: HttpClient) { }
 
   getPaises(){
-    return this.http.get('https://www.zipcodeapi.com/');
+    return this.http.get('');
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReactiveComponent implements OnInit {
 
-  constructor() { }
+  forma!: FormGroup; //significa que se le dara un valor a la variable antes de usarla
+
+  constructor( private fb: FormBuilder) {
+
+
+    this.crearFormulario();
+
+   }
 
   ngOnInit(): void {
+  }
+
+  crearFormulario(){
+
+    this.forma = this.fb.group({
+      nombre: [''],
+      apellido: [''],
+      correo: [''],
+    });
+
+  }
+
+  guardar(){
+    console.log(this.forma);
+
   }
 
 }
