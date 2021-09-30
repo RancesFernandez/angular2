@@ -9,15 +9,12 @@ export class ValidadoresService {
   constructor() { }
 
 
-  noHerrera(control: FormControl): {[s:string]: boolean  } {
+  /*noHerrera(control: FormControl): {[s:string]: boolean  } {
 
      if( control.value.toLowerCase() === 'herrera' ){
       return {
         noHerrera: true
       }
      }
-     
-     
-
-  }
+  }*/
 }
