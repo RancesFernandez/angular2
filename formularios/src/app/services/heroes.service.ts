@@ -27,6 +27,41 @@ export class HeroesService {
 
   actualizarHeroe(heroe: HeroeModel){
 
-    return this.http.put(`${this.url }/heroes/${heroe.id}.json`, heroe);
+    const heroeTemp = {
+      ...heroe
+    };
+
+    delete heroeTemp.id;
+
+    return this.http.put(`${this.url }/Heroes/${heroe.id}.json`, heroeTemp);
   }
+
+  getHeroes(){
+    return this.http.get(`${this.url}/Heroes.json`)
+    .pipe(
+      map( this.crearArreglo )
+    );
+
+  }
+  private crearArreglo( heroesObj: { [key: string]: any } ) {
+
+    const heroes: HeroeModel[] = [];
+
+
+    Object.keys( heroesObj ).forEach(key => {
+
+      const heroe: HeroeModel = heroesObj[key];
+      heroe.id = key;
+
+      heroes.push(heroe);
+    });
+
+    if( heroesObj === null ) {return [];}
+
+
+
+
+    return heroes;
+  }
+
 }
